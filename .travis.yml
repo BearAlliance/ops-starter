@@ -20,8 +20,7 @@ test:
 
 # Push back to master with updated package.json and CHANGELOG
 after_success:
-    script:
-      - scripts/push.sh $GH_TOKEN $TRAVIS_BRANCH
+  - scripts/push.sh $GH_TOKEN $TRAVIS_BRANCH
 
 deploy:
   - provider: script
