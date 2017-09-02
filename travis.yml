@@ -1,0 +1,10 @@
+language: node_js
+
+services:
+  - mongodb
+
+install:
+  - npm install
+
+test:
+  - npm test
