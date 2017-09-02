@@ -20,8 +20,8 @@ upload_files() {
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     echo "Pushing changes to master"
     setup_git
-    RESULT=`upload_files $GH_TOKEN $BRANCH`
-    exit $RESULT
+    upload_files $GH_TOKEN $BRANCH
+    exit $?
 else
     echo "Skipping push, branch is not master"
 fi
