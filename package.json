@@ -1,11 +1,13 @@
 {
   "name": "ops-starter",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
+  "description": "",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha --timeout 10000 && npm run prettier -- -l",
-    "prettier": "prettier --single-quote **/*.js *.js"
+    "prettier": "prettier --single-quote **/*.js *.js",
+    "release": "standard-version"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -22,6 +24,11 @@
     "chai-http": "^3.0.0",
     "jasmine": "^2.8.0",
     "mocha": "^3.5.0",
-    "prettier": "^1.6.1"
+    "prettier": "^1.6.1",
+    "standard-version": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BearAlliance/ops-starter.git"
   }
 }
