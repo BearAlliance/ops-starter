@@ -2,7 +2,7 @@
 
 # Arguments:
 GH_TOKEN=$1
-TRAVIS_BRANCH=$2
+BRANCH=$2
 
 setup_git() {
   git config --global user.email "travis@travis-ci.org"
@@ -11,15 +11,16 @@ setup_git() {
 
 upload_files() {
   GH_TOKEN=$1
-  TRAVIS_BRANCH=$2
+  BRANCH=$2
   git remote add origin-changes https://${GH_TOKEN}@github.com/bearalliance/ops-starter.git
-  exit `git push --quiet --set-upstream origin-changes $TRAVIS_BRANCH`
+  git push --quiet --set-upstream origin-changes master
+  exit $?
 }
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     echo "Pushing changes to master"
     setup_git
-    RESULT=`upload_files $GH_TOKEN $TRAVIS_BRANCH`
+    RESULT=`upload_files $GH_TOKEN $BRANCH`
     exit $RESULT
 else
     echo "Skipping push, branch is not master"
