@@ -5,23 +5,24 @@ node_js:
 
 services:
   - mongodb
+  # No docker yet
   #- docker
 
 install:
   - npm install
 
-build:
-  - script:
-    - scripts/release.sh $TRAVIS_BRANCH
-  #docker build .
-
-test:
+script:
+  # If it's a pull request to master we don't want
+  # the rest of the build to think it's building the real master branch
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - scripts/release.sh $BRANCH
+  # No docker yet
+  #- docker build .
   - npm test
 
 # Push back to master with updated package.json and CHANGELOG
 after_success:
-    script:
-      - scripts/push.sh $GH_TOKEN $TRAVIS_BRANCH
+  - scripts/push.sh $GH_TOKEN $BRANCH
 
 deploy:
   - provider: script
