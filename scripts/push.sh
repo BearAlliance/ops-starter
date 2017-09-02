@@ -13,7 +13,7 @@ upload_files() {
   GH_TOKEN=$1
   TRAVIS_BRANCH=$2
   git remote add origin-changes https://${GH_TOKEN}@github.com/bearalliance/ops-starter.git
-  git push --quiet --set-upstream origin-changes $TRAVIS_BRANCH
+  exit `git push --quiet --set-upstream origin-changes $TRAVIS_BRANCH`
 }
 
 if [ "$TRAVIS_BRANCH" == "master" ];
