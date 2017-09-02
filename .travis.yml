@@ -11,8 +11,7 @@ install:
   - npm install
 
 build:
-  - script:
-    - scripts/release.sh $TRAVIS_BRANCH
+  - scripts/release.sh $TRAVIS_BRANCH
   #docker build .
 
 test:
@@ -20,8 +19,7 @@ test:
 
 # Push back to master with updated package.json and CHANGELOG
 after_success:
-    script:
-      - scripts/push.sh $GH_TOKEN $TRAVIS_BRANCH
+  - scripts/push.sh $GH_TOKEN $TRAVIS_BRANCH
 
 deploy:
   - provider: script
