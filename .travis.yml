@@ -10,7 +10,7 @@ services:
 install:
   - npm install
 
-build:
+script:
   - scripts/release.sh $TRAVIS_BRANCH
   #docker build .
 

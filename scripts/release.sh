@@ -3,9 +3,9 @@
 # Arguments:
 TRAVIS_BRANCH=$1
 
-echo "release script, travis branch: ${TRAVIS_BRANCH}"
-
-if [ "$TRAVIS_BRANCH" == "master" ];
-    then
-        npm run release
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+    echo "Running release"
+    npm run release
+else
+    echo "Skipping release, branch is not master"
 fi
