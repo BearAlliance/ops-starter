@@ -16,11 +16,13 @@ upload_files() {
   exit `git push --quiet --set-upstream origin-changes $TRAVIS_BRANCH`
 }
 
-if [ "$TRAVIS_BRANCH" == "master" ];
-    then
-        setup_git
-        RESULT=`upload_files $GH_TOKEN $TRAVIS_BRANCH`
-        exit $RESULT
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+    echo "Pushing changes to master"
+    setup_git
+    RESULT=`upload_files $GH_TOKEN $TRAVIS_BRANCH`
+    exit $RESULT
+else
+    echo "Skipping push, branch is not master"
 fi
 
 exit 0
