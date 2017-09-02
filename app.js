@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 // db options
 let options = {
   server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
+  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
 };
 
 let config = {
@@ -49,7 +49,6 @@ let config = {
 mongoose.connect(config.DBHost, options);
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-
 
 // error handler
 app.use(function(err, req, res, next) {

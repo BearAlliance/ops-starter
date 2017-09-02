@@ -3,7 +3,6 @@ module.exports = {
   sendResultsJson: sendResultsJson
 };
 
-
 function getTestData(req, res, next) {
   res.results = {
     successful: true,
